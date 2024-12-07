@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import './PerfilUsuario.css'
 
 function ListaTareas(){
     
@@ -75,7 +77,10 @@ function ListaTareas(){
     }
 return (
     <div className='p-4 max-w-md mx-auto'>
-        <h2 className='text-2xl font-bold mb-4'>Mi Lista de Tareas</h2>
+            <h2 className='text-4xl text-center font-bold mb-4'>Mi Lista de Tareas</h2>
+        <Link to='/perfilUsuario'>
+            <button id='exito'>Ir a Formulario</button>
+        </Link>
         <div className='mb-4 flex gap-2'>
             <input
                 type="text"
@@ -107,7 +112,7 @@ return (
         </div>
         <ul className='space-y-2'>
             {tareas.map(tarea => (
-            <li key={tarea.id} className='flex items-center justify-between p-2 border rounded'>
+            <li key={tarea.id} className='flex items-center justify-between p-2 border rounded bg-slate-200'>
                 <div className='flex items-center gap-2'>
                     <input
                         type="checkbox"
@@ -116,7 +121,6 @@ return (
                         className='h-4 w-4  rounded-lg hover:bg-red-500'
                         />
                     <span className={tarea.completada ? 'line-through' : ''}>
-
                         {tarea.texto}
                     </span>
                 </div>
