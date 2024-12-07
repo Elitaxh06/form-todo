@@ -1,0 +1,22 @@
+#exito{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    width: 11.5em;
+    height: 2em;
+    border-radius: 2em;
+    background-color: rgb(0, 0, 255);
+    color: white;
+    margin: 1em 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#exito:hover{
+    background-color: rgba(25, 204, 106, 0.453);
+    color: rgb(247, 247, 247);
+    box-shadow: 0 0 20px rgb(255, 0, 0);                
+    transform: translateY(-0.5em);
+}
