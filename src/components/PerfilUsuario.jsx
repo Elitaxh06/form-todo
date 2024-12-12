@@ -124,7 +124,7 @@ function PerfilUsuario() {
   return (
     <div className='p-4 max-w-md mx-auto'>
         <h2 className='text-4xl font-bold mb-4 text-center'>Perfil de Usuario</h2>
-            <h1 className='text-2xl font-bold' id='h1'></h1>
+            <h1 className='text-2xl font-bold text-center' id='h1'></h1>
         <Link to="/listaTareas">
             <button className='exit' id='exito'>Ir a la lista de tareas</button>
         </Link>
@@ -143,8 +143,7 @@ function PerfilUsuario() {
                         type="button"
                         onClick={limpiarFormulario}
                         disabled={enviando}
-                        className="px-4 py-2 bg-gray-500 text-white round
-                        ed hover:bg-gray-600"
+                        className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
                         >
                         Limpiar
                     </button>
@@ -173,8 +172,7 @@ function PerfilUsuario() {
                
 
                 <div className='mt-4 p-4 bg-gray-100 rounded'>
-                    <h3 className='font-bold mb-2'>Datos del Usuario:</h3
-                    >
+                    <h3 className='font-bold mb-2'>Datos del Usuario:</h3>
                     <pre className="text-sm">
                     {JSON.stringify(paset, null, 2)}
                     </pre>

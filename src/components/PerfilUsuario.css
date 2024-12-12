@@ -16,8 +16,8 @@
 }
 
 #exito:hover{
-    background-color: rgb(53, 197, 77);
+    background-color: rgb(4, 190, 190);
     color: rgb(247, 247, 247);
-    box-shadow: 0 0 20px rgb(255, 0, 0);                
+    box-shadow: 0 0 20px rgba(247, 1, 255, 0.87);                
     transform: translateY(-0.5em);
 }

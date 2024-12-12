@@ -18,7 +18,8 @@ function ListaTareas(){
         
     const [nuevaTarea, setNuevaTarea] = useState('')
     const [tareas, setTareas] = useState(parset)
-    const [filtro, setFiltro] = useState('todas') // puede ser todad pendientes o completadas
+    const [filtro, setFiltro] = useState('') // puede ser todas pendientes o completadas
+    const [search, setSearch] = useState('') // para buscar tareas
 
 
     const saveTareas = (newTareas) => {
@@ -28,14 +29,15 @@ function ListaTareas(){
 
     
     const agregarTarea = () => {
+                // si la tarea no es vacia se inicializa una constante tarea que es un objeto con el texto y un id unico y un vlaor completada que es false
         if (nuevaTarea.trim() !== '') {
             const tarea = {
                 id: Date.now(), // Un identificador único
                 texto: nuevaTarea,
                 completada: false
             }
-            saveTareas([...tareas, tarea])
-            setNuevaTarea('')
+            saveTareas([...tareas, tarea]) // se copia la tarea y se agrega el objeto creado previamente (const tarea)
+            setNuevaTarea('') // se limpia la tarea para que el input quede vacio
         }
     }
 
@@ -75,6 +77,8 @@ function ListaTareas(){
         const pendientes = total - completadas
         return {total, completadas, pendientes}
     }
+
+    const filtrarTareas = obtenerTareasFiltradas().filter(tar => tar.texto.toLowerCase().includes(search.toLowerCase()));
 return (
     <div className='p-4 max-w-md mx-auto'>
             <h2 className='text-4xl text-center font-bold mb-4'>Mi Lista de Tareas</h2>
@@ -82,6 +86,8 @@ return (
             <button id='exito'>Ir a Formulario</button>
         </Link>
         <div className='mb-4 flex gap-2'>
+
+
             <input
                 type="text"
                 value={nuevaTarea}
@@ -94,6 +100,14 @@ return (
             </button>
         </div>
         <div className='mb-4'>
+            <input 
+            type="" 
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Buscar tareas"
+            className='border p-2 rounded w-full'
+            
+            />
             <select
                 
                 value={filtro}
@@ -111,24 +125,29 @@ return (
             <p>Pendientes: {contarTareas().pendientes}</p>
         </div>
         <ul className='space-y-2'>
-            {tareas.map(tarea => (
-            <li key={tarea.id} className='flex items-center justify-between p-2 border rounded bg-slate-200'>
-                <div className='flex items-center gap-2'>
-                    <input
-                        type="checkbox"
-                        checked={tarea.completada}
-                        onChange={() => toggleCompletada(tarea.id)}
-                        className='h-4 w-4  rounded-lg hover:bg-red-500'
-                        />
-                    <span className={tarea.completada ? 'line-through' : ''}>
-                        {tarea.texto}
-                    </span>
-                </div>
-            <button className='bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600' onClick={() => eliminarTarea(tarea.id)}>
-                Eliminar
-            </button>
-            </li>
-            ))}
+            {filtrarTareas.map(tarea => (
+                // {tareas.map(tarea => (
+                    <li key={tarea.id} className='flex items-center justify-between p-2 border rounded bg-slate-200'>
+                    <div className='flex items-center gap-2'>
+                        <input
+                            type="checkbox"
+                            checked={tarea.completada}
+                            onChange={() => toggleCompletada(tarea.id)}
+                            className='h-4 w-4  rounded-lg hover:bg-red-500'
+                            />
+                        <span className={tarea.completada ? 'line-through' : ''}>
+                            {tarea.texto}
+                        </span>
+                    </div>
+                <button className='bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600' onClick={() => eliminarTarea(tarea.id)}>
+                    Eliminar
+                </button>
+                </li>
+            
+            // ))}
+        ))}
+
+            {obtenerTareasFiltradas().length === 0 && <p className='text-center text-xl font-bold'>No hay tareas para mostrar</p>}
         </ul>
     </div>
     )
