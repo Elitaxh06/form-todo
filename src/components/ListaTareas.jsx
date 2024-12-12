@@ -27,7 +27,7 @@ function ListaTareas(){
         setTareas(newTareas)
     }
 
-    
+
     const agregarTarea = () => {
                 // si la tarea no es vacia se inicializa una constante tarea que es un objeto con el texto y un id unico y un vlaor completada que es false
         if (nuevaTarea.trim() !== '') {
@@ -49,15 +49,14 @@ function ListaTareas(){
     }
     // Nueva función para marcar una tarea como completada
     const toggleCompletada = (id) => {
-    const nuevasTareas = tareas.map(tarea => {
-
-        if (tarea.id === id) {
-        // Si es la tarea que buscamos, cambiamos su estado
-        return { ...tarea, completada: !tarea.completada }
-        }
-        // Si no es la tarea, la dejamos igual
-        return tarea
-    })
+        const nuevasTareas = tareas.map(tarea => {
+            if (tarea.id === id) {
+                // Si es la tarea que buscamos, cambiamos su estado
+                return {...tarea, completada: !tarea.completada }
+            }
+            // Si no es la tarea, la dejamos igual
+            return tarea
+        })
     saveTareas(nuevasTareas)
     }
 
@@ -105,7 +104,7 @@ return (
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar tareas"
-            className='border p-2 rounded w-full'
+            className='border p-2 rounded w-full mb-2'
             
             />
             <select
