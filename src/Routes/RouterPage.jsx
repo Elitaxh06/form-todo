@@ -7,7 +7,7 @@ export default function RouterPage() {
     return (
         <>
             <Routes>
-                <Route path='/' element={<Inicio/>} />
+                <Route path='/' element={<ListaTareas/>} />
                 <Route path='/perfilUsuario' element={<PerfilUsuario/>} />
                 <Route path='/listaTareas' element={<ListaTareas/>} />
             </Routes>
