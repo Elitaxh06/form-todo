@@ -86,14 +86,15 @@ return (
         </Link>
         <div className='mb-4 flex gap-2'>
 
-
-            <input
-                type="text"
-                value={nuevaTarea}
-                onChange={(e) => setNuevaTarea(e.target.value)}
-                placeholder="Escribe una nueva tarea"
-                className='border p-2 flex-1 rounded-md'
-                />
+            <form onSubmit={agregarTarea}>
+                <input
+                    type="text"
+                    value={nuevaTarea}
+                    onChange={(e) => setNuevaTarea(e.target.value)}
+                    placeholder="Escribe una nueva tarea"
+                    className='border p-2 flex-1 rounded-md'
+                    />
+            </form>
             <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600' onClick={agregarTarea}>
                 Agregar Tarea
             </button>
@@ -108,7 +109,6 @@ return (
             
             />
             <select
-                
                 value={filtro}
                 onChange={(e)=> setFiltro(e.target.value)}
                 className='border p-2 rounded w-full'
